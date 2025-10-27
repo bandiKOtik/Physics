@@ -17,7 +17,7 @@ public class CoinCollector : MonoBehaviour
         if (other.gameObject.TryGetComponent<Coin>(out Coin coin))
         {
             AddCoin(coin.CoinValue);
-            gameObject.SetActive(false);
+            coin.gameObject.SetActive(false);
         }
     }
 }
