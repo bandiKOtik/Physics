@@ -7,11 +7,6 @@ public class TextUpdater : MonoBehaviour
     [SerializeField] private GameConditions _gameConditions;
     [SerializeField] private CoinCollector _coinCollector;
 
-    private void Awake()
-    {
-        LogWhenNull();
-    }
-
     void Update()
     {
         if (_timerText != null && _gameConditions != null)
@@ -26,22 +21,7 @@ public class TextUpdater : MonoBehaviour
 
         if (_collectedCoinsText != null && _coinCollector != null)
         {
-            _collectedCoinsText.text = $"Collected Coins: {_coinCollector.CollectedCoins}";
+            _collectedCoinsText.text = $"Collected Coins: {_coinCollector.CollectedCoinsValue}";
         }
-    }
-
-    private void LogWhenNull()
-    {
-        if (_gameConditions == null)
-            Debug.LogError("Game conditions is null!");
-
-        if (_coinCollector == null)
-            Debug.LogError("Coin collectorr is null!");
-
-        if (_timerText == null)
-            Debug.LogError("Timer text is null!");
-
-        if (_coinsText == null)
-            Debug.LogError("Coins text is null!");
     }
 }

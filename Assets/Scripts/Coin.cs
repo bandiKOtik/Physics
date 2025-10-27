@@ -1,24 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
 public class Coin : MonoBehaviour
 {
-    [SerializeField] private int coinValue = 1;
+    [SerializeField] private int _coinValue = 1;
+    public int CoinValue {  get; private set; }
 
     private void Awake()
     {
-        Collider col = GetComponent<Collider>();
-        col.isTrigger = true;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.TryGetComponent<CoinCollector>(out CoinCollector collector))
-        {
-            collector.AddCoin(coinValue);
-            gameObject.SetActive(false);
-        }
+        CoinValue = _coinValue;
     }
 }

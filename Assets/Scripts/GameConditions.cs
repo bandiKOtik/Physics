@@ -6,43 +6,30 @@ public class GameConditions : MonoBehaviour
     [SerializeField] private GameObject _playerObject;
     [SerializeField] private float _timer = 60f;
     [SerializeField] private Coin[] _coins;
-    private bool _notAttachedCoinsExeption = false;
+    private CoinCollector _playerCollector;
 
     public float Timer => _timer;
     public int RemainCoins { get; private set; }
 
     private void Awake()
     {
-        CheckOnErrors();
-
+        _playerCollector = _playerObject.GetComponent<CoinCollector>();
         _isGameActive = true;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        RemainCoins = _coins.Length - _playerCollector.CollectedCoinsCount;
+
         UpdateGameRestrictions();
     }
 
     private bool IsAllCoinsCollected()
     {
-        if (_notAttachedCoinsExeption == false)
-        {
-            bool allCoinsCollected = true;
-            int remainCoinsTemp = 0;
-
-            for (int i = 0; i < _coins.Length; i++)
-            {
-                if (_coins[i].gameObject.activeSelf)
-                    remainCoinsTemp++;
-            }
-
-            if (remainCoinsTemp > 0)
-                allCoinsCollected = false;
-
-            RemainCoins = remainCoinsTemp;
-            return allCoinsCollected;
-        }
-        else { return false; }
+        if (_coins.Length - _playerCollector.CollectedCoinsCount == 0)
+            return true;
+        else
+            return false;
     }
 
     private void UpdateGameRestrictions()
@@ -68,24 +55,5 @@ public class GameConditions : MonoBehaviour
         _playerObject.SetActive(false);
         _isGameActive = false;
         Debug.Log(message);
-    }
-
-    private void CheckOnErrors()
-    {
-        if (_coins.Length == 0)
-        {
-            _notAttachedCoinsExeption = true;
-            Debug.LogError($"Coins not attached to array in: {gameObject.name}!");
-        }
-
-        if (_timer == 0)
-        {
-            Debug.LogError($"Timer is set to 0 on Awake in: {gameObject.name}!");
-        }
-
-        if (_playerObject == null)
-        {
-            Debug.LogError($"Player object not attached to: {gameObject.name}!");
-        }
     }
 }
