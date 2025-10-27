@@ -6178,6 +6178,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 243070380}
     m_Modifications:
+    - target: {fileID: 2430714651829115300, guid: 4838ff2b48cd7d1489332d5f4b983363,
+        type: 3}
+      propertyPath: _coinValue
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2567771306807115442, guid: 4838ff2b48cd7d1489332d5f4b983363,
         type: 3}
       propertyPath: m_Name
@@ -7180,6 +7185,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 243070380}
     m_Modifications:
+    - target: {fileID: 2430714651829115300, guid: 8c37724ca86f6ee4b8edee04ad1e1241,
+        type: 3}
+      propertyPath: _coinValue
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2567771306807115442, guid: 8c37724ca86f6ee4b8edee04ad1e1241,
         type: 3}
       propertyPath: m_Name
@@ -8649,6 +8659,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 243070380}
     m_Modifications:
+    - target: {fileID: 2430714651829115300, guid: 8c37724ca86f6ee4b8edee04ad1e1241,
+        type: 3}
+      propertyPath: _coinValue
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2567771306807115442, guid: 8c37724ca86f6ee4b8edee04ad1e1241,
         type: 3}
       propertyPath: m_Name
